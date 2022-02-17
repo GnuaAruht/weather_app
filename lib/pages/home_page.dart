@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'forecast_page.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -64,7 +66,7 @@ class HomePage extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Image.asset(
-                                'images/50n.png',
+                                'images/09d.png',
                                 width: 78.0,
                                 height: 78.0,
                                 fit: BoxFit.fill,
@@ -100,8 +102,8 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                       Expanded(
-                        child: Container(
-                          color: Colors.white,
+                        child: DecoratedBox(
+                          decoration: const BoxDecoration(color: Colors.white),
                           child: Column(
                             children: [
                               Expanded(
@@ -138,7 +140,7 @@ class HomePage extends StatelessWidget {
                                     Expanded(
                                       child: Container(
                                         margin: const EdgeInsets.only(
-                                            top: 1.0, right: 0.5),
+                                            top: 1.0, left: 0.5),
                                         color: Colors.blue,
                                         child: Column(
                                           mainAxisAlignment:
@@ -200,7 +202,7 @@ class HomePage extends StatelessWidget {
                                     Expanded(
                                       child: Container(
                                         margin: const EdgeInsets.only(
-                                            top: 1.0, right: 0.5),
+                                            top: 1.0, left: 0.5),
                                         color: Colors.blue,
                                         child: Column(
                                           mainAxisAlignment:
@@ -253,11 +255,14 @@ class HomePage extends StatelessWidget {
                               fontSize: 18.0, fontWeight: FontWeight.w600),
                         ),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (_) => const ForecastPage()));
+                          },
                           child: Row(
                             children: const [
                               Text(
-                                'Next 5 days',
+                                'Next 7 days',
                                 style: TextStyle(
                                     fontSize: 18.0,
                                     fontWeight: FontWeight.w600),
@@ -299,8 +304,8 @@ class HomePage extends StatelessWidget {
                                     const Text('12:00'),
                                     Image.asset(
                                       'images/50n.png',
-                                      width: 32.0,
-                                      height: 32.0,
+                                      width: 38.0,
+                                      height: 38.0,
                                       fit: BoxFit.fill,
                                     ),
                                     const Text(
