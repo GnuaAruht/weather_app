@@ -38,7 +38,7 @@ class HourlyForecastWidget extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 132.0,
+          height: 130.0,
           child: ListView.separated(
               itemCount: 8,
               scrollDirection: Axis.horizontal,

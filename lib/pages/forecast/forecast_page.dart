@@ -8,7 +8,7 @@ class ForecastPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlue,
+      backgroundColor: const Color.fromARGB(255, 50, 109, 235),
       appBar: _buildAppBar(),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 8.0),
@@ -31,7 +31,7 @@ class ForecastPage extends StatelessWidget {
 
   AppBar _buildAppBar() {
     return AppBar(
-      backgroundColor: Colors.lightBlue,
+      backgroundColor: const Color.fromARGB(255, 50, 109, 235),
       elevation: 0.0,
       centerTitle: true,
       title: RichText(

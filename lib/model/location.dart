@@ -1,10 +1,10 @@
-class LocationModel {
+class Location {
   final String city;
   final String coutry;
   final double lat;
   final double lon;
 
-  LocationModel({
+  Location({
     required this.city,
     required this.coutry,
     required this.lat,

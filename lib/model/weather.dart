@@ -14,9 +14,13 @@ class Weather {
 
   factory Weather.fromJson(Map<String, dynamic> json) {
     return Weather(
-      current: json['current'],
-      hourly: json['hourly'],
-      daily: json['daily'],
+      current: Forecast.fromJson(json['current']),
+      hourly: (json['hourly'] as List<dynamic>)
+          .map((data) => Forecast.fromJson(data))
+          .toList(),
+      daily: (json['daily'] as List<dynamic>)
+          .map((data) => DailyForecast.fromJson(data))
+          .toList(),
     );
   }
 }

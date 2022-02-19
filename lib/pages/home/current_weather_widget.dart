@@ -32,7 +32,7 @@ class WeatherHeaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.lightBlue,
+      color: const Color.fromARGB(255, 50, 109, 235),
       alignment: Alignment.center,
       padding: const EdgeInsets.fromLTRB(24.0, 20.0, 24.0, 8.0),
       child: Column(
@@ -40,9 +40,9 @@ class WeatherHeaderWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Image.asset(
-            'images/10n.png',
-            width: 78.0,
-            height: 78.0,
+            'images/10d.png',
+            width: 100.0,
+            height: 100.0,
             fit: BoxFit.fill,
           ),
           const Text(
@@ -155,7 +155,7 @@ class WeatherInfoItemWidget extends StatelessWidget {
         left: isLeft ? 0.5 : 0.0,
         right: isLeft ? 0.0 : 0.5,
       ),
-      color: Colors.lightBlue,
+      color: const Color.fromARGB(255, 50, 109, 235),
       alignment: Alignment.center,
       child: Row(
         mainAxisSize: MainAxisSize.min,

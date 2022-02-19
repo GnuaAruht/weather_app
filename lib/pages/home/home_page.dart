@@ -15,34 +15,37 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: _buildAppBar(),
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: const [
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 24.0,
-                vertical: 12.0,
+      body: RefreshIndicator(
+        onRefresh: () async {},
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: const [
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 24.0,
+                  vertical: 12.0,
+                ),
+                child: WeatherLocationWidget(),
               ),
-              child: WeatherLocationWidget(),
-            ),
-            AspectRatio(
-                aspectRatio: 0.88,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 28.0,
-                    vertical: 8.0,
-                  ),
-                  child: CurrentWeatherWidget(),
-                )),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                vertical: 16.0,
-              ),
-              child: HourlyForecastWidget(),
-            )
-          ],
+              AspectRatio(
+                  aspectRatio: 0.88,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 28.0,
+                      vertical: 8.0,
+                    ),
+                    child: CurrentWeatherWidget(),
+                  )),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  vertical: 24.0,
+                ),
+                child: HourlyForecastWidget(),
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -56,14 +59,6 @@ class HomePage extends StatelessWidget {
         Icons.menu,
         color: Colors.black,
       ),
-      actions: [
-        IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.more_horiz_rounded,
-              color: Colors.black,
-            ))
-      ],
     );
   }
 }
