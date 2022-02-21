@@ -22,8 +22,9 @@ class HourlyForecastWidget extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (_) => const ForecastPage()));
+                  // Navigator.of(context).push(
+                  //     MaterialPageRoute(builder: (_) => const ForecastPage()));
+                  Get.toNamed('/dailyForecast');
                 },
                 child: Row(
                   children: const [

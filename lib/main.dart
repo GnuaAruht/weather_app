@@ -19,6 +19,7 @@ class WeatherApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      defaultTransition: Transition.fadeIn,
       initialRoute: '/home',
       getPages: [
         GetPage(
@@ -26,9 +27,9 @@ class WeatherApp extends StatelessWidget {
             page: () => const HomePage(),
             binding: HomeBinding()),
         GetPage(
-          name: '/dailyForecast',
-          page: () => const ForecastPage(),
-        ),
+            name: '/dailyForecast',
+            page: () => const ForecastPage(),
+            arguments: []),
       ],
     );
   }

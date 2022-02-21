@@ -14,5 +14,5 @@ class WeatherProvider extends GetConnect {
   }
 
   Future<Response<Weather>> getWeather(Location location) => get<Weather>(
-      '$ONECALL_ENDPOINT?lat=${location.lat}&lon=${location.lon}&appid=$APP_ID');
+      '$ONECALL_ENDPOINT?lat=${location.lat}&lon=${location.lon}&exclude=minutely,alerts&appid=$APP_ID&units=metric');
 }

@@ -8,17 +8,29 @@ import '../../models/forecast.dart';
 import '../../models/location.dart';
 import '../../models/weather.dart';
 import '../../widgets/loading_widget.dart';
-import '../forecast/forecast_page.dart';
 
 part 'current_weather_widget.dart';
 part 'hourly_forecast_widget.dart';
 part 'weather_location_widget.dart';
 
-class HomePage extends GetView<WeatherController> {
+class HomePage extends StatefulWidget {
   final Location location;
   const HomePage({Key? key, Location? pLocation})
       : location = pLocation ?? DEFAULT_LOCATION,
         super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  late final WeatherController controller;
+
+  @override
+  void initState() {
+    controller = Get.find<WeatherController>()..fetchWeather(widget.location);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +39,7 @@ class HomePage extends GetView<WeatherController> {
       appBar: _buildAppBar(),
       body: RefreshIndicator(
         onRefresh: () async {
-          controller.fetchWeather(location);
+          controller.fetchWeather(widget.location);
         },
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
@@ -62,7 +74,7 @@ class HomePage extends GetView<WeatherController> {
             vertical: 12.0,
           ),
           child: WeatherLocationWidget(
-            location: location,
+            location: widget.location,
           ),
         ),
         AspectRatio(

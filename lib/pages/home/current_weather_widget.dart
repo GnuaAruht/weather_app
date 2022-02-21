@@ -120,14 +120,14 @@ class WeatherInfoWidget extends StatelessWidget {
                   child: WeatherInfoItemWidget(
                       iconUrl: 'assets/wind_icon.png',
                       title: 'Wind',
-                      value: '${wind}km/j',
+                      value: '${wind}km/h',
                       isLeft: false),
                 ),
                 Expanded(
                   child: WeatherInfoItemWidget(
                       iconUrl: 'assets/temperature_icon.png',
                       title: 'Feels like',
-                      value: '$feelsLike°',
+                      value: '${feelsLike.toInt()}°',
                       isLeft: true),
                 ),
               ],
@@ -147,7 +147,7 @@ class WeatherInfoWidget extends StatelessWidget {
                   child: WeatherInfoItemWidget(
                       iconUrl: 'assets/pressure_icon.png',
                       title: 'Pressure',
-                      value: '${pressure}mbar',
+                      value: '${pressure}hPa',
                       isLeft: true),
                 ),
               ],
