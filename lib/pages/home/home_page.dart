@@ -95,6 +95,9 @@ class _HomePageState extends State<HomePage> {
           ),
           child: HourlyForecastWidget(
             hourly: weather.hourly,
+            onTapDailyForecast: () {
+              Get.toNamed('/dailyForecast', arguments: weather.daily);
+            },
           ),
         ),
       ],

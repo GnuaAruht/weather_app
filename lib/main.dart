@@ -27,9 +27,9 @@ class WeatherApp extends StatelessWidget {
             page: () => const HomePage(),
             binding: HomeBinding()),
         GetPage(
-            name: '/dailyForecast',
-            page: () => const ForecastPage(),
-            arguments: []),
+          name: '/dailyForecast',
+          page: () => const ForecastPage(),
+        ),
       ],
     );
   }

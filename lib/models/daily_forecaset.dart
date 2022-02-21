@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class DailyForecast {
   final int dt;
   final double temp;
@@ -19,4 +21,11 @@ class DailyForecast {
       icon: json['weather'][0]['icon'],
     );
   }
+}
+
+extension DailyForecastX on DailyForecast {
+  String get iconUrl => 'assets/$icon.png';
+  DateTime get date => DateTime.fromMillisecondsSinceEpoch(dt * 1000);
+  String get weekDay => DateFormat('EEEE').format(date);
+  String get formattedDate => DateFormat('dd MMM').format(date);
 }

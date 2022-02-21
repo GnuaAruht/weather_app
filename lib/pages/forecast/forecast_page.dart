@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:weather_app/models/daily_forecaset.dart';
 
 part 'forecast_list_widget.dart';
 
@@ -7,6 +9,7 @@ class ForecastPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<DailyForecast> daily = Get.arguments;
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 50, 109, 235),
       appBar: _buildAppBar(),
@@ -14,15 +17,17 @@ class ForecastPage extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            Text(
+          children: [
+            const Text(
               'Next 7 Days',
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 22.0,
                   fontWeight: FontWeight.w600),
             ),
-            ForecastListWidget()
+            ForecastListWidget(
+              daily: daily,
+            )
           ],
         ),
       ),

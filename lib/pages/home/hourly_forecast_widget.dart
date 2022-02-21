@@ -2,9 +2,11 @@ part of 'home_page.dart';
 
 class HourlyForecastWidget extends StatelessWidget {
   final List<Forecast> hourly;
+  final VoidCallback onTapDailyForecast;
   const HourlyForecastWidget({
     Key? key,
     required this.hourly,
+    required this.onTapDailyForecast,
   }) : super(key: key);
 
   @override
@@ -21,11 +23,7 @@ class HourlyForecastWidget extends StatelessWidget {
                 style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600),
               ),
               GestureDetector(
-                onTap: () {
-                  // Navigator.of(context).push(
-                  //     MaterialPageRoute(builder: (_) => const ForecastPage()));
-                  Get.toNamed('/dailyForecast');
-                },
+                onTap: onTapDailyForecast,
                 child: Row(
                   children: const [
                     Text(
