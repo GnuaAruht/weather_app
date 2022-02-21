@@ -23,4 +23,6 @@ class Weather {
           .toList(),
     );
   }
+
+  static Weather fromJsonData(dynamic jsonData) => Weather.fromJson(jsonData);
 }

@@ -1,8 +1,10 @@
 part of 'home_page.dart';
 
 class HourlyForecastWidget extends StatelessWidget {
+  final List<Forecast> hourly;
   const HourlyForecastWidget({
     Key? key,
+    required this.hourly,
   }) : super(key: key);
 
   @override
@@ -40,7 +42,7 @@ class HourlyForecastWidget extends StatelessWidget {
         SizedBox(
           height: 130.0,
           child: ListView.separated(
-              itemCount: 8,
+              itemCount: hourly.length,
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -50,6 +52,7 @@ class HourlyForecastWidget extends StatelessWidget {
                 );
               },
               itemBuilder: (context, index) {
+                final forecast = hourly[index];
                 return AspectRatio(
                   aspectRatio: 0.54,
                   child: DecoratedBox(
@@ -62,18 +65,18 @@ class HourlyForecastWidget extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          const Text(
-                            '12:00',
+                          Text(
+                            forecast.formattedTime,
                           ),
                           Image.asset(
-                            'images/50n.png',
+                            forecast.iconUrl,
                             width: 42.0,
                             height: 42.0,
                             fit: BoxFit.fill,
                           ),
-                          const Text(
-                            'Now',
-                            style: TextStyle(fontWeight: FontWeight.w600),
+                          Text(
+                            '${forecast.temp}°',
+                            style: const TextStyle(fontWeight: FontWeight.w600),
                           )
                         ],
                       ),

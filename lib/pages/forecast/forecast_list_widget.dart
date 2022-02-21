@@ -24,9 +24,9 @@ class ForecastItemWidget extends StatelessWidget {
       contentPadding:
           const EdgeInsets.symmetric(vertical: 10.0, horizontal: 8.0),
       leading: Image.asset(
-        'images/02d.png',
-        width: 50.0,
-        height: 50.0,
+        'assets/50d.png',
+        width: 56.0,
+        height: 56.0,
         fit: BoxFit.cover,
       ),
       title: RichText(

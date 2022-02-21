@@ -1,22 +1,32 @@
 part of 'home_page.dart';
 
 class CurrentWeatherWidget extends StatelessWidget {
-  const CurrentWeatherWidget({
-    Key? key,
-  }) : super(key: key);
+  final Forecast forecast;
+  const CurrentWeatherWidget({Key? key, required this.forecast})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(16.0),
       child: Column(
-        children: const [
+        children: [
           Expanded(
             flex: 2,
-            child: WeatherHeaderWidget(),
+            child: WeatherHeaderWidget(
+              iconUrl: forecast.iconUrl,
+              description: forecast.description,
+              formattedDate: forecast.formattedDate,
+              temp: forecast.temp,
+            ),
           ),
           Expanded(
-            child: WeatherInfoWidget(),
+            child: WeatherInfoWidget(
+              wind: forecast.wind,
+              feelsLike: forecast.feelsLike,
+              uvi: forecast.uvi,
+              pressure: forecast.pressure,
+            ),
           )
         ],
       ),
@@ -25,8 +35,16 @@ class CurrentWeatherWidget extends StatelessWidget {
 }
 
 class WeatherHeaderWidget extends StatelessWidget {
+  final String iconUrl;
+  final String description;
+  final String formattedDate;
+  final double temp;
   const WeatherHeaderWidget({
     Key? key,
+    required this.iconUrl,
+    required this.description,
+    required this.formattedDate,
+    required this.temp,
   }) : super(key: key);
 
   @override
@@ -40,14 +58,14 @@ class WeatherHeaderWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Image.asset(
-            'images/10d.png',
-            width: 100.0,
-            height: 100.0,
+            iconUrl,
+            width: 80.0,
+            height: 80.0,
             fit: BoxFit.fill,
           ),
-          const Text(
-            'Heavy Rain',
-            style: TextStyle(
+          Text(
+            description.capitalizeFirst!,
+            style: const TextStyle(
                 fontSize: 24.0,
                 color: Colors.white,
                 fontWeight: FontWeight.bold),
@@ -55,16 +73,16 @@ class WeatherHeaderWidget extends StatelessWidget {
           const SizedBox(
             height: 10.0,
           ),
-          const Text(
-            'Sunaday, 02 Oct',
-            style: TextStyle(color: Colors.white, fontSize: 16.0),
+          Text(
+            formattedDate,
+            style: const TextStyle(color: Colors.white, fontSize: 16.0),
           ),
-          const Expanded(
+          Expanded(
             child: Center(
               child: Text(
-                '24°',
-                style: TextStyle(
-                    fontSize: 66.0,
+                '${temp.toInt()}°',
+                style: const TextStyle(
+                    fontSize: 64.0,
                     color: Colors.white,
                     fontWeight: FontWeight.w600),
               ),
@@ -77,8 +95,16 @@ class WeatherHeaderWidget extends StatelessWidget {
 }
 
 class WeatherInfoWidget extends StatelessWidget {
+  final double wind;
+  final double feelsLike;
+  final double uvi;
+  final double pressure;
   const WeatherInfoWidget({
     Key? key,
+    required this.wind,
+    required this.feelsLike,
+    required this.uvi,
+    required this.pressure,
   }) : super(key: key);
 
   @override
@@ -89,19 +115,19 @@ class WeatherInfoWidget extends StatelessWidget {
         children: [
           Expanded(
             child: Row(
-              children: const [
+              children: [
                 Expanded(
                   child: WeatherInfoItemWidget(
-                      iconUrl: 'images/wind_icon.png',
+                      iconUrl: 'assets/wind_icon.png',
                       title: 'Wind',
-                      value: '19.2 km/j',
+                      value: '${wind}km/j',
                       isLeft: false),
                 ),
                 Expanded(
                   child: WeatherInfoItemWidget(
-                      iconUrl: 'images/temperature_icon.png',
-                      title: 'Feel like',
-                      value: '25',
+                      iconUrl: 'assets/temperature_icon.png',
+                      title: 'Feels like',
+                      value: '$feelsLike°',
                       isLeft: true),
                 ),
               ],
@@ -109,19 +135,19 @@ class WeatherInfoWidget extends StatelessWidget {
           ),
           Expanded(
             child: Row(
-              children: const [
+              children: [
                 Expanded(
                   child: WeatherInfoItemWidget(
-                      iconUrl: 'images/uvi_icon.png',
+                      iconUrl: 'assets/uvi_icon.png',
                       title: 'Index UV',
-                      value: '2.0',
+                      value: '$uvi',
                       isLeft: false),
                 ),
                 Expanded(
                   child: WeatherInfoItemWidget(
-                      iconUrl: 'images/pressure_icon.png',
+                      iconUrl: 'assets/pressure_icon.png',
                       title: 'Pressure',
-                      value: '1014 mbar',
+                      value: '${pressure}mbar',
                       isLeft: true),
                 ),
               ],

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
+import 'bindings/home_binding.dart';
+import 'pages/forecast/forecast_page.dart';
 import 'pages/home/home_page.dart';
 
 Future<void> main() async {
@@ -14,13 +17,19 @@ class WeatherApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Weather app',
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const HomePage(),
+      initialRoute: '/home',
+      getPages: [
+        GetPage(
+            name: '/home',
+            page: () => const HomePage(),
+            binding: HomeBinding()),
+        GetPage(
+          name: '/dailyForecast',
+          page: () => const ForecastPage(),
+        ),
+      ],
     );
   }
 }

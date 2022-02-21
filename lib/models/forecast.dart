@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class Forecast {
   final int dt;
   final double temp;
@@ -30,4 +32,11 @@ class Forecast {
         description: json['weather'][0]['description'],
         icon: json['weather'][0]['icon']);
   }
+}
+
+extension ForecastX on Forecast {
+  String get iconUrl => 'assets/$icon.png';
+  DateTime get date => DateTime.fromMillisecondsSinceEpoch(dt * 1000);
+  String get formattedDate => DateFormat('EEEE, dd MMM').format(date);
+  String get formattedTime => DateFormat('HH:mm').format(date);
 }

@@ -4,7 +4,7 @@ class Location {
   final double lat;
   final double lon;
 
-  Location({
+  const Location({
     required this.city,
     required this.coutry,
     required this.lat,
