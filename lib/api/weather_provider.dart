@@ -1,7 +1,7 @@
 import 'package:get/get_connect.dart';
 
 import '../constants/api_constants.dart';
-import '../constants/app_id_sample.dart';
+import '../constants/app_id.dart';
 import '../models/location.dart';
 import '../models/weather.dart';
 
